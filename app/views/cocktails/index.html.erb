@@ -1,2 +1,16 @@
-<h1>Cocktails#index</h1>
-<p>Find me in app/views/cocktails/index.html.erb</p>
+<div>
+  <h1>Let's Get Drunk</h1>
+  <h4><em>If it's not Happy Lemon, it's Happy Hour!</em></h4>
+</div>
+
+<ul>
+  <% @cocktails.each do |cocktail| %>
+  <li>
+  <%= link_to cocktail_path(cocktail) do %>
+    <%= cocktail.name %>
+  <% end %>
+
+ <% end %>
+ </li>
+
+</ul>

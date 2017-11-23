@@ -1,5 +1,9 @@
-<h1>COCKTAILS#NEW</h1>
-<%= simple_form_for [@cocktail] do |f| %>
-  <%= f.input :name, placeholder: "What's the name of your cocktail?" %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <h1>Add a Cocktail</h1>
+</div>
+<div class = "form">
+  <%= simple_form_for [@cocktail] do |f| %>
+    <%= f.input :name, placeholder: "What's the name of your cocktail?", input_html: { class: 'text_field' }, label: false %>
+    <%= f.submit input_html: { class: 'button' } %>
+  <% end %>
+</div>

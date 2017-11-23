@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.text_field {
+  border-radius: 5px;
+  width: 300px;
+  height: 100px;
+  text-align: center;
+}
+
+.button {
+  background-color: red;
+}

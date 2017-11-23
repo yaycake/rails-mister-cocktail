@@ -1,1 +1,7 @@
 <h1>DOSES#NEW</h1>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+    <%= f.input :ingredient_id, collection: Ingredient.all.map {|i| [i.name, i.id] }, placeholder: "Select an ingredient!", input_html: { class: 'text_field' }, label: false %>
+    <%= f.input :description %>
+    <%= f.submit input_html: { class: 'button' } %>
+  <% end %>

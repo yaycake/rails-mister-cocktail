@@ -1,5 +1,5 @@
 <h1>COCKTAILS#NEW</h1>
-<%= simple_form_for(@cocktails, @doses) do |f| %>
-  <%= f.input :name %>
+<%= simple_form_for [@cocktail] do |f| %>
+  <%= f.input :name, placeholder: "What's the name of your cocktail?" %>
   <%= f.submit %>
 <% end %>

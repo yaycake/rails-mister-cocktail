@@ -43,33 +43,32 @@ c_data = JSON.parse(c_response)
 cocktails = c_data["drinks"]
 
 cocktails.each do |cocktail|
-  sleep(5)
+  sleep(1)
   new_cocktail = Cocktail.new(name: cocktail["strDrink"])
-
   drink_url = "http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=#{cocktail["idDrink"]}"
-
   drink_response = open(drink_url).read
-
   drink_data = JSON.parse(drink_response)#json hash of array of hash
-
   drink = drink_data["drinks"][0] #a hash of singular drink detail
+  puts("\n\n\nPHOTO\n#{drink["strDrinkThumb"]}\n\n\n")
+  new_cocktail.remote_photo_url = drink["strDrinkThumb"] # set the photo url
+  next unless new_cocktail.save
+
+
 
     # drink.each do |kvpair|
         # p kvpair
-      new_cocktail.photo = drink["strDrinkThumb"] # set the photo url
+
        i_pattern =  /^strIngredient\d?\d$/  #ingredients pattern
        m_pattern = /^strMeasure\d?\d$/
-        p ingredients_array = drink.select {|key, value| key =~ i_pattern}.to_h.values.compact.reject{|x| x.strip==""}
-        p measurements_array = drink.select {|key, value| key =~ m_pattern}.to_h.values.compact.reject{|x| x.strip==""}
-        ingredients_array.each do |ingredient|
-          if Ingredient.where(name: ingredient)
-            next
-          else
-            new_ingredient = Ingredient.new(name: ingredient)
-            new_ingredient.save!
-            p new_ingredient.errors.full_messages
-          end
-          Dose.create()
+        ingredients_array = drink.select {|key, value| key =~ i_pattern}.to_h.values.compact.reject{|x| x.strip==""}
+        measurements_array = drink.select {|key, value| key =~ m_pattern}.to_h.values.compact.reject{|x| x.strip==""}
+        ingredients_array.each_with_index do |ingredient, index|
+          ingredient = Ingredient.where(name: ingredient).first_or_create
+          puts("\n\n#{measurements_array[index]}\n\n")
+          new_dose = ingredient.doses.create(description: measurements_array[index], cocktail_id: new_cocktail.id)
+          new_dose.save
+          p new_dose.errors.full_messages
+
 
         end
       # end

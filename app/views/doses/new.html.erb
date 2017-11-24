@@ -1,10 +1,10 @@
 <div class="container">
-  <h1>Add to <%= @cocktail.name %></h1>
+  <h2 style = "text-align: center">Add to <%= @cocktail.name %></h1>
 </div>
 <div class = "form">
 <%= simple_form_for [@cocktail, @dose] do |f| %>
-    <%= f.input :ingredient_id, collection: Ingredient.all.map {|i| [i.name, i.id] }, placeholder: "Select an ingredient!", input_html: { class: 'text_field' }, label: false, input_html: { class: 'text_field' } %>
-    <%= f.input :description, input_html: { class: 'text_field' }%>
-    <%= f.submit input_html: { class: 'button' } %>
+    <%= f.input :ingredient_id, collection: Ingredient.all.map {|i| [i.name, i.id] }, placeholder: "Select an ingredient!", input_html: { class: 'text_field' }, label: "Select An Ingredient", input_html: { class: 'text_field' } %>
+    <%= f.input :description, input_html: { class: 'text_field' }, label: "Enter the amount of the ingredient"%>
+    <%= f.submit nil, class: 'btn btn-primary' %>
   <% end %>
 </div>

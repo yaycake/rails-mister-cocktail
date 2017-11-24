@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h1>Add a Cocktail</h1>
 </div>
 <div class = "form">
@@ -9,4 +9,17 @@
     <%= f.submit input_html: { class: 'button' } %>
   <% end %>
 
+</div> -->
+
+<div class="container">
+<%#= image_tag "bartend.jpg", input_html: { class: 'new_cocktail'} %>
+  <h2 style = "text-align: center">Add A Cocktail</h2>
+  <div class="form">
+     <%= simple_form_for [@cocktail] do |f| %>
+    <%= f.input :name, placeholder: "What's the name of your cocktail?", input_html: { class: 'text_field' }, label: false %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.submit nil, class: 'btn btn-primary' %>
+  <% end %>
+  </div>
 </div>

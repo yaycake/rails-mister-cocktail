@@ -1,3 +1,5 @@
+// ___ _ _ _ _ _ _ _ _ _ _ _FRONT PAGE TILES
+
 body
 {
   background-color:#eee
@@ -6,7 +8,7 @@ body
 {
   margin:50px auto 0 auto;
   width:100%;
-  display:flex;
+  display: block;
   align-items:space-around;
   max-width:1200px;
 }
@@ -139,7 +141,17 @@ box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
 
 @media (max-width: 1000px) {
   .wrap {
-   flex-direction: column;
+   // flex-direction: column;
     width:400px;
   }
+}
+
+// ___ _ _ _ _ _ _ _ _ _ _ _OTHER FRONT PAGE STUFF
+
+.banner {
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+
 }
